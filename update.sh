@@ -9,7 +9,7 @@ curl -o $fileName $stevelBlackHostsUrl
 sed -i -n '/^# Start StevenBlack$/,$p' $fileName
 
 # Delete comments
-search="#.*"
+search="[ ]*#.*"
 replace=""
 sed -i "s/$search/$replace/g" $fileName
 
@@ -22,7 +22,8 @@ sed -i "s/$search/$replace/g" $fileName
 sed -i -r '/^\s*$/d' $fileName
 
 # Sort
-sort $fileName > $fileName
+sort $fileName > tmp
+mv tmp $fileName
 
 # Push to main
 git add *
