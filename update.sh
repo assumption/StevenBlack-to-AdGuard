@@ -21,6 +21,9 @@ sed -i "s/$search/$replace/g" $fileName
 # Delete empty lines
 sed -i -r '/^\s*$/d' $fileName
 
+# Sort
+sort $fileName > $fileName
+
 # Push to main
 git add *
 git commit -m "Update hosts"
